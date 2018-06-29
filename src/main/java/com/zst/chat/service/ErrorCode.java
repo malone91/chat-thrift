@@ -10,10 +10,13 @@ package com.zst.chat.service;
 public enum ErrorCode implements org.apache.thrift.TEnum {
   OK(0),
   NetError(1),
+  DBError(2),
+  OtherError(3),
   UserNotExist(100),
   PasswordError(101),
   UserDisable(102),
   UserExist(103),
+  DataTooLong(104),
   UserOffline(200);
 
   private final int value;
@@ -39,6 +42,10 @@ public enum ErrorCode implements org.apache.thrift.TEnum {
         return OK;
       case 1:
         return NetError;
+      case 2:
+        return DBError;
+      case 3:
+        return OtherError;
       case 100:
         return UserNotExist;
       case 101:
@@ -47,6 +54,8 @@ public enum ErrorCode implements org.apache.thrift.TEnum {
         return UserDisable;
       case 103:
         return UserExist;
+      case 104:
+        return DataTooLong;
       case 200:
         return UserOffline;
       default:

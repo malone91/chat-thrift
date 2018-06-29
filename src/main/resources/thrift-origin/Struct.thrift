@@ -14,8 +14,6 @@
  */
  
 namespace java com.zst.chat.service
-namespace cocoa ChatRoomService
-namespace csharp ChatRoomService
 
 // 客户端类型
 enum ClientType {
@@ -46,11 +44,14 @@ enum ErrorCode{
 	// 常规错误
 	OK = 0,
 	NetError,
+    DBError,
+	OtherError,
 	// 登录注册错误
 	UserNotExist = 100,
 	PasswordError,
 	UserDisable,
 	UserExist,
+	DataTooLong,
 	// 发送消息错误
 	UserOffline = 200,
 }
@@ -117,6 +118,11 @@ struct GetUserListRequest{
 	5: optional StatusType status;
 }
 
+// 获取用户图像
+struct GetUserLogoRequest{
+	1: optional i32 userId;
+	2: optional string userName;
+}
 // 发送消息返回值
 struct SendMessageResponse{
 	1: required ErrorCode errorCode;
