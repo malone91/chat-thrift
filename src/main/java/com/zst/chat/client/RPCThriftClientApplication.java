@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created by Ablert
  * on 2018/6/18.
+ * @author Ablert
  */
 @SpringBootApplication
 public class RPCThriftClientApplication {
