@@ -4,7 +4,6 @@ import com.zst.chat.listen.ClientThread;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -19,9 +18,8 @@ public class RPCThriftClientApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RPCThriftClientApplication.class, args);
-        //启动线程池
+        //使用线程池的方式启动线程，将任务机制与执行机解耦，此为执行机制
         ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 3, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
         executor.execute(new ClientThread());
-        executor.shutdown();
     }
 }
